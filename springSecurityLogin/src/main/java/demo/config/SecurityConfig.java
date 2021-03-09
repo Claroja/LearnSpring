@@ -22,10 +22,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .successForwardUrl("/success")//登录成功后的跳转页面,Post请求
             .failureForwardUrl("/failure");//登录成功后的跳转页面,Post请求
         //授权
-        http
-            .authorizeRequests()
-            .antMatchers("/login.html").permitAll()//放行自定义的登录页面
-            .anyRequest().authenticated();//所有请求必须验证
+        http.authorizeRequests()
+
+                .antMatchers("/login.html").permitAll()//放行/login.html，不需要认证
+                // .antMatchers("/css/**","/js/**","/images/**").permitAll()//放行静态资源
+                // .antMatchers("/**/*.png").permitAll()//放行后缀.png
+
+                // .regexMatchers(".+[.]png").permitAll()//放行后缀.png,正则表达式
+                // .regexMatchers(HttpMethod.POST,"/demo").permitAll()//指定请求方法
+
+                 .antMatchers("/main").hasAuthority("admin")//基于权限
+                // .antMatchers("/main1.html").hasAnyAuthority("admin","admiN")
+
+                // .antMatchers("/main1.html").hasRole("abC")//基于角色
+                // .antMatchers("/main1.html").hasAnyRole("abC","abc")
+
+                // .antMatchers("/main1.html").hasIpAddress("127.0.0.1")//基于IP地址
+
+                .anyRequest().authenticated();//所有请求都必须认证才能访问，必须登录
 
         //关闭跨域防护
         http.csrf().disable();//关闭后才可以转发请求

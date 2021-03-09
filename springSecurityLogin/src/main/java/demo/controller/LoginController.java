@@ -10,8 +10,15 @@ public class LoginController {
     public String successLogin(){
         return "success";
     }
+
     @RequestMapping("/failure")
     public String failureLogin(){
         return "failure";
     }
+
+    @RequestMapping("/main")
+    public String main(){
+        return "main";
+    }
+
 }
