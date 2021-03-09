@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/login")//和login.html form表单的action保持一致;
             .successForwardUrl("/success")//登录成功后的跳转页面,Post请求
             .failureForwardUrl("/failure");//登录成功后的跳转页面,Post请求
+
         //授权
         http.authorizeRequests()
 
@@ -40,6 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // .antMatchers("/main1.html").hasIpAddress("127.0.0.1")//基于IP地址
 
                 .anyRequest().authenticated();//所有请求都必须认证才能访问，必须登录
+
+
+        //退出
+        http.logout()
+//                .logoutSuccessUrl("/login.html")//退出成功后跳转的页面
+                .logoutUrl("/logout");
 
         //关闭跨域防护
         http.csrf().disable();//关闭后才可以转发请求
