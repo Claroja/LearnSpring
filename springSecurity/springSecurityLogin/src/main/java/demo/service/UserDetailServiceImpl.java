@@ -1,5 +1,6 @@
 package demo.service;
 
+import demo.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -14,18 +15,22 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserMapper userMapper;
 
+
+    //这一步只是根据用户输入从数据库中获得用户信息,框架会拿到此结果在下一步进行密码的比较
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //1.根据用户名去数据库查询,如果不存在抛出异常
-        if(!"admin".equals(username)){
+        //根据用户输入的用户名,从数据库中获得用户信息,写全包名是为了和security的User类区别
+        demo.model.User user = userMapper.getUserByName(username);
+        //用户名不存在则
+        if(user==null){
             throw new UsernameNotFoundException("用户名不存在");
         }
-        //2.用户名存在,则比较密码
-        String password = passwordEncoder.encode("123"); //获得客户端传来的密码
-//        password.matches();//比较数据库查询密码和客户端密码是否相同
-        //3.如果相同则返回UserDetail
-
-        return new User(username,password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        //此步多余,测试密码没有加密所以手动加密,生产中不需要
+        String password = passwordEncoder.encode(user.getPassword());
+        //将userDetail返回,框架会和输入的密码进行比对
+        return new User(username,password, AuthorityUtils.createAuthorityList(user.getAuthority()));
     }
 }
