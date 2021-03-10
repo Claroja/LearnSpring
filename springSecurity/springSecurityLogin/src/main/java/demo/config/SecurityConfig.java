@@ -1,6 +1,5 @@
 package demo.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,8 +12,6 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -61,11 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from user where username=?")
-                .authoritiesByUsernameQuery("select username,authority from user where username=?");
+        auth
+            .inMemoryAuthentication()
+            .withUser("wxy").password("$2a$10$sOa.vRgQZg3.DZFmWj9tBOiCAxCgYrli6QwaCphvlxFIrheaC9xei").roles("admin").and()
+            .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Bean
