@@ -1,0 +1,10 @@
+spring:
+  datasource: # 配置数据路连接驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.222:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+
+mybatis: # 配置mybatis
+  type-aliases-package: com.claroja.model # 模型所在目录,xml中的resultType就不用写全类名了
+  mapper-locations: classpath:mapper/*Mapper.xml # mapper.xml所在目录

@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: org.neo4j.jdbc.http.HttpDriver
+    url: jdbc:neo4j:http://192.168.2.222:7474
+    username: neo4j
+    password: 123456
