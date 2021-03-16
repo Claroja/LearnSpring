@@ -1,0 +1,16 @@
+spring:
+  datasource: # 配置数据路连接驱动
+    primary:
+      driver-class-name: org.sqlite.JDBC
+      jdbcUrl: jdbc:sqlite:F:/test1.db # 多数据库时使用jdbcUrl,而不能使用url
+  #    jdbc-url: jdbc:sqlite::resource:static/test1.db
+
+    secondary:
+      driver-class-name: org.sqlite.JDBC
+      jdbcUrl: jdbc:sqlite:F:/test2.db # 多数据库时使用jdbcUrl,而不能使用url
+  #    jdbc-url: jdbc:sqlite::resource:static/test1.db
+
+
+#mybatis: # 配置mybatis
+#  type-aliases-package: com.claroja.model # 多数据库时有问题
+#  mapper-locations: classpath:mapper/*Mapper.xml # 多数据时通过config,自定义,不能使用默认
