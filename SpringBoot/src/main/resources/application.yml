@@ -1,0 +1,13 @@
+person:
+  userName: zhangsan
+  age: 18
+  online: false
+  birth: 2019/12/12 20:12:33
+  interests: [python, java]
+  pet:
+    - tom
+    - jerry
+  parent: [xy, yx]
+  score:
+    math: 20
+    english: 30

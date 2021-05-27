@@ -1,0 +1,12 @@
+package demo5.config;
+
+import demo5.bean.User;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration //配置类, 相当于Spring的xml配置文件
+@EnableConfigurationProperties(User.class)
+//1、开启User配置绑定功能
+//2、把这个user这个组件自动注册到容器中
+public class MyConfig {
+}

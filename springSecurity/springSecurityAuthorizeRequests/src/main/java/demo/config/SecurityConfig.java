@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // .antMatchers("/**/*.png").permitAll()//放行后缀.png
 
                 // .regexMatchers(".+[.]png").permitAll()//放行后缀.png,正则表达式
-                // .regexMatchers(HttpMethod.POST,"/demo").permitAll()//指定请求方法
+                // .regexMatchers(HttpMethod.POST,"/demo1").permitAll()//指定请求方法
 
                  .antMatchers("/main").hasAuthority("admin")//基于权限
                 // .antMatchers("/main1.html").hasAnyAuthority("admin","admiN")

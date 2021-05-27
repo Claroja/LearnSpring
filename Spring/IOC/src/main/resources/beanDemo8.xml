@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="pen" class="com.demo8.Pen"/>
+
+<!--    1. byName就是通过id来自动注入-->
+<!--    2. byType就是根据class来注入, 如果有多个相同类型, 会报错-->
+    <bean id="user" class="com.demo8.User" autowire="byName">
+<!--        <property name="pen" ref="com.demo5.xml.Pen"></property>-->
+    </bean>
+
+
+</beans>

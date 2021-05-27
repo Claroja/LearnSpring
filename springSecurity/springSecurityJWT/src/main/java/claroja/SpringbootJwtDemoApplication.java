@@ -1,15 +1,12 @@
-package demo;
+package claroja;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "demo1.dao")
-public class DemoApplication {
+public class SpringbootJwtDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(SpringbootJwtDemoApplication.class, args);
     }
-
 }

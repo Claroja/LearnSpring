@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    1. 外部Bean方式-->
+    <bean id="com.demo5.Pen" class="com.demo5.xml.Pen"/>
+    <bean id="user" class="com.demo5.xml.User">
+        <property name="pen" ref="com.demo5.Pen"></property>
+    </bean>
+
+<!--    2. 内部bean方式 省略了`ref`-->
+<!--    <bean id="user" class="com.demo5.xml.User">-->
+<!--        <property name="pen">-->
+<!--            <bean id="com.demo5.xml.Pen" class="com.demo5.xml.Pen"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+
+</beans>

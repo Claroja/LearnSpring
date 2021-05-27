@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.demo6.User">
+        <!--数组类型属性注入-->
+        <property name="strs">
+            <array>
+                <value>java</value>
+                <value>python</value>
+            </array>
+        </property>
+        <!--list类型属性注入-->
+        <property name="list">
+            <list>
+                <value>wang</value>
+                <value>wei</value>
+            </list>
+        </property>
+
+        <property name="listO">
+            <list>
+                <ref bean="pen1"></ref>
+                <ref bean="pen1"></ref>
+            </list>
+        </property>
+
+        <!--map类型属性注入-->
+        <property name="map">
+            <map>
+                <entry key="key1" value="value1"></entry>
+                <entry key="key2" value="value2"></entry>
+            </map>
+        </property>
+        <!--set类型属性注入-->
+        <property name="set">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="pen1" class="com.demo6.Pen"></bean>
+    <bean id="pen2" class="com.demo6.Pen"></bean>
+</beans>
