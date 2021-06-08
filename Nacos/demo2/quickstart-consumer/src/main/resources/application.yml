@@ -1,0 +1,12 @@
+server:
+  port: 88888 #启动端口 命令行注入
+
+spring:
+  application:
+    name: consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 110d0329-95b6-43a7-9401-0fc6405a960e
+        cluster-name: DEFAULT
